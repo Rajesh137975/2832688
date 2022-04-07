@@ -187,6 +187,6 @@ def transform_view():
     print(output_result['result'])
     print("End - total items:", output_result['total'])
 
-    return str( "Total sets: "+str(len(output_result['result'])) +" \n"+str(output_result['result']) )
+    return str(  str(output_result['result'])+''+" Number of sets: "+str(len(output_result['result'])) )
     # print(output_result)
     # app.run(debug=True)
