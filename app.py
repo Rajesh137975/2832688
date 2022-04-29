@@ -4,7 +4,7 @@ from flask import Flask, request
 # from werkzeug.utils import secure_filename
 from itertools import chain, combinations
 import os
-import argparse
+import time
 import io
 import csv
 
@@ -20,7 +20,17 @@ def form():
        <html>
         <head>
         <body>
-            <div>
+            <div style="
+            width: 100%;
+            margin: auto;
+            margin-top: auto;
+            max-width: 438px;
+            font-size: 24px;
+            font-family: serif;
+            box-shadow: blue 0px 0px 0px 2px inset, rgb(255 255 255) 10px -10px 0px -3px, rgb(31 193 27) 10px -10px, rgb(255 255 255) 20px -20px 0px -3px, rgb(255 217 19) 20px -20px, rgb(255 255 255) 30px -30px 0px -3px, rgb(255 156 85) 30px -30px, rgb(255 255 255) 40px -40px 0px -3px, rgb(255 85 85) 40px -40px;
+            padding: 26px;
+            margin-top: 66px;
+            ">
             <h1>CIS550 Apriori Algorithm</h1>
             <div>
                 <div
@@ -132,6 +142,7 @@ def transform_arr(items):
 
 @app.route('/algorithm', methods=["POST"])
 def transform_view():
+    time1 = time.time()
     file_input = request.files['input_csv']
     mim_sup = request.form.get('mim_sup')
     filename = file_input.filename
@@ -148,4 +159,4 @@ def transform_view():
             text = text+i+","
         input_arr.append(text[:-1])
     apriori_dict["result"] = algorithm_apriori(input_arr, int(mim_sup))
-    return str(  str(apriori_dict['result'])+''+" Number of sets: "+str(len(apriori_dict['result']))+' file name is :'+filename )
+    return str(  str(apriori_dict['result'])+''+" Number of sets: "+str(len(apriori_dict['result']))+' file name is :'+filename+' Execution time:'+str(time.time() - time1  ) )
