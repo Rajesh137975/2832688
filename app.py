@@ -159,4 +159,4 @@ def transform_view():
             text = text+i+","
         input_arr.append(text[:-1])
     apriori_dict["result"] = algorithm_apriori(input_arr, int(mim_sup))
-    return str(  str(apriori_dict['result'])+''+" Number of sets: "+str(len(apriori_dict['result']))+' file name is :'+filename+' Execution time:'+str(time.time() - time1  ) )
+    return str(  str(apriori_dict['result'])+''+" Number of sets: "+str(len(apriori_dict['result']))+' file name is :'+filename+' Execution time:'+str(time.time() - time1 )+" seconds" )
